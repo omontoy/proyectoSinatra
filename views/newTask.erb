@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+   <title>Nueva tarea</title>
+</head>
+<body>
+
+   <div class="container">
+      <div class="col-sm-offset-3 col-sm-6">
+         <form action="/creacionTarea" method="post">
+            <br><br><br><h2>CREAR UNA NUEVA TAREA</h2>
+
+            <div class="thumbnail">
+               <br><input type="text" name ="task" size="40" placeholder="Nombre de la nueva tarea"></input><br>
+
+               <!-- Inicia prueba -->
+               <!-- <div class="form-group">
+                  <br><label for="comment">DETALLES:</label><br>
+                     
+                  <textarea name="detalles" cols="50" rows="3" placeholder="Pequeña descripción" id="comment"></textarea>
+                  
+               </div> -->
+               <!--termina prueba -->
+
+               <button type="submit" class="btn btn-success">Crear Tarea  <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button><br><br>
+            </div>
+         </form>
+
+         <form action="/home" method="post">
+            <br><button id="goBack" type="submit" class="btn btn-primary">Ir al home  <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button><br><br>
+         </form>
+      </div>
+
+   </div>
+   
+</body>
+</html>
