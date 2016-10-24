@@ -10,7 +10,7 @@ def deleteTarea
    Tarea.destroy(params[:idTarea])
 end
 
-def completar
+def completeTarea
    Tarea.update(params[:completada])
 end
 
@@ -26,36 +26,40 @@ post "/newTaskInterface" do
    erb :newTask
 end
 
-get "/lista" do
-   @hashTareas = Tarea.all
-   erb :listaTareas
-end
-
-post "/creacionTarea" do
+post "/crearTarea" do
    createTarea
-   redirect '/lista'
+   redirect '/pendientes'
 end
 
-post "/tareaCreada" do
-   redirect '/lista'
+post "/tareasCreadas" do
+   redirect '/pendientes'
 end
 
-get "/borrarTareas" do
-   deleteTarea
-   redirect '/lista'
+post "/tareasCompletadas" do
+   redirect '/completadas'
 end
 
-get "/borrarTareas2" do
-   deleteTarea
-   redirect '/tareasCompletadas'
+get "/pendientes" do
+   @hashTareas = Tarea.all
+   erb :listaPendientes
+end
+
+get "/completadas" do
+   @hashTareas = Tarea.all
+   erb :listaCompletas
 end
 
 get "/completarTarea" do
-   completar
-   redirect '/lista'
+   completeTarea
+   redirect '/pendientes'
 end
 
-get "/tareasCompletadas" do
-   @hashTareas = Tarea.all
-   erb :completas
+get "/borrarPendientes" do
+   deleteTarea
+   redirect '/pendientes'
+end
+
+get "/borrarCompletadas" do
+   deleteTarea
+   redirect '/completadas'
 end

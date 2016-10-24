@@ -33,11 +33,11 @@
                      </h1>
                   </div>
          
-                  <div class="panel-body" id="texto">
+                  <div class="panel-body" id="fechaTareas">
 
                      <div class="col-sm-4">
-                        <form action="/borrarTareas" method="get">
-                           <button type="submit" class="btn btn-danger">borrar</button>
+                        <form action="/borrarPendientes" method="get">
+                           <button id="borrarYcompletar" type="submit" class="btn btn-danger">borrar</button>
                            <input type="text" name="idTarea" size="10" value="<%= id %>" hidden="true">
                         </form>
                      </div>
@@ -59,7 +59,7 @@
                      
                      <div class="col-sm-4">
                         <form action="/completarTarea" method="get">
-                           <button type="submit" class="btn btn-success">completar</button>
+                           <button id="borrarYcompletar" type="submit" class="btn btn-success">completar</button>
                            <input type="text" name="completada" size="10" value="<%= id %>" hidden="true">
                         </form> 
                      </div>
@@ -74,14 +74,14 @@
          <div class="row">
             <div class="col-sm-6">
                <form action="/newTaskInterface" method="post">
-                  <button id="goBack" type="submit" class="btn btn-success">Crear nueva tarea <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
+                  <button id="goTo" type="submit" class="btn btn-success">Crear nueva tarea <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
                   
                </form>
             </div>
             
             <div class="col-sm-6">
-               <form action="/tareasCompletadas" method="get">
-                  <button id="goBack" type="submit" class="btn btn-warning">Tareas Completadas  <span class="glyphicon glyphicon-tags" aria-hidden="true"></span></button>
+               <form action="/tareasCompletadas" method="post">
+                  <button id="goTo" type="submit" class="btn btn-warning">Tareas Completadas  <span class="glyphicon glyphicon-tags" aria-hidden="true"></span></button>
                </form>
             </div>
          </div>
@@ -89,7 +89,7 @@
          <div class="row">
             <div class="col-sm-offset-4 col-sm-4">
                <form action="/home" method="post">
-                  <button id="goBack" type="submit" class="btn btn-info">Ir al home <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+                  <button id="goTo" type="submit" class="btn btn-info">Ir al home <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
                </form> 
             </div>
          </div>

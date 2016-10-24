@@ -8,10 +8,10 @@ require "make_todo"
 
 puts Tarea.all
 
-vble = Tarea.all
-vble.each do |tarea|
-   puts dones = tarea["done"]
-end
+# vble = Tarea.all
+# vble.each do |tarea|
+#    puts dones = tarea["done"]
+# end
 
 # @dones.each do |recorrer|
 #    puts recorrer
