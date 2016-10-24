@@ -37,3 +37,22 @@ html {
 .jumbotron {
    border: 5px ridge grey;
 }
+
+#tareasCompletas {
+   background-color: #04B4AE!important;
+}
+
+#fondoTareas {
+   /*background: #F2F2F2!important; */
+   background: url('../images/paper2.jpg'); 
+}
+
+#texto {
+   font-size: 15px;
+}
+
+.panel-heading {
+   border-radius: 25px;
+}
+/*
+http://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_animate1*/

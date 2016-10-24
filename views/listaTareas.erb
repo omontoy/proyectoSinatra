@@ -7,82 +7,93 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   
-   <title>Lista de Tareas</title>
+   <title>Tareas pendientes</title>
 </head>
 <body>
 
    <div class="container"> 
 
       <div class="col-sm-offset-3 col-sm-6">
-         <h1>LISTA DE TAREAS</h1><br>
+         <h1>TAREAS PENDIENTES</h1><br>
 
          <% if @hashTareas.empty? == true then %>
             <div class="jumbotron">
-               <h2>No has creado<br> ninguna tarea</h2>
+               <h2>No tienes tareas<br> pendientes</h2>
             </div>
          <% end %>
 
          <% @hashTareas.each do |tarea| %>
-  
-         <div class="panel panel-primary">
-            <div class="panel-heading">
-               <h1 class="panel-title">
-                  <%=  tarea["title"] %>
-                  <%=  id = tarea["id"] %> 
-                  <%=  done = tarea["done"] %>  
-               </h1>
-            </div>
+            <% done = tarea["done"] %>
+            <% if done == false %>
+               <div class="panel panel-primary" id="fondoTareas">
+                  <div class="panel-heading">
+                     <h1 class="panel-title">
+                        <%= tarea["title"] %>
+                        <% id = tarea["id"] %>  
+                     </h1>
+                  </div>
          
-            <div class="panel-body">
+                  <div class="panel-body" id="texto">
 
-               <div class="col-sm-4">
-                  <form action="/borrarTareas" method="get">
-                     <button type="submit" class="btn btn-danger">borrar</button>
-                     <input type="text" name="idTarea" size="10" value="<%= id %>">
-                  </form>
-               </div>
+                     <div class="col-sm-4">
+                        <form action="/borrarTareas" method="get">
+                           <button type="submit" class="btn btn-danger">borrar</button>
+                           <input type="text" name="idTarea" size="10" value="<%= id %>" hidden="true">
+                        </form>
+                     </div>
 
-               <div class="col-sm-4" >
-                  
-                  <% date = tarea["created_at"]%>
-                  <% str = date[11..18] %>
-                  <% wrong_hour = str[0..1].to_i %>
-                  <% real_hour = (wrong_hour - 5).to_s %> 
-                  
-                  <% if real_hour.to_i < 0 then %>
-                     <% real_hour = (real_hour.to_i + 24).to_s %>
-                  <% end %>
+                     <div class="col-sm-4" >
+                        <% date = tarea["created_at"]%>
+                        <% str = date[11..18] %>
+                        <% wrong_hour = str[0..1].to_i %>
+                        <% real_hour = (wrong_hour - 5).to_s %> 
+                        
+                        <% if real_hour.to_i < 0 then %>
+                           <% real_hour = (real_hour.to_i + 24).to_s %>
+                        <% end %>
 
-                  <% min_seg = str[2..-1] %>
-                  <br><%= "Creada a las" %><br>
-                  <%= hour = real_hour + min_seg + " hrs" %>  
+                        <% min_seg = str[2..-1] %>
+                        <%= "Creada a las" %><br>
+                        <%= hour = real_hour + min_seg + " hrs" %>  
+                     </div> 
+                     
+                     <div class="col-sm-4">
+                        <form action="/completarTarea" method="get">
+                           <button type="submit" class="btn btn-success">completar</button>
+                           <input type="text" name="completada" size="10" value="<%= id %>" hidden="true">
+                        </form> 
+                     </div>
+
+                  </div>                  
                </div> 
-               
-               <div class="col-sm-4">
-                  <form action="/completarTarea" method="get">
-                     <button type="submit" class="btn btn-success">completar</button>
-                     <input type="text" name="completada" size="10" value="<%= id %>">
-                  </form> 
-               </div>
-
-            </div>                  
-         </div> 
+            <% end %>
          
          <% end %>  
 
          <br>
-         <div class="col-sm-6">
-            <form action="/newTaskInterface" method="post">
-               <button id="goBack" type="submit" class="btn btn-success">Crear nueva tarea   <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
-               
-            </form>
+         <div class="row">
+            <div class="col-sm-6">
+               <form action="/newTaskInterface" method="post">
+                  <button id="goBack" type="submit" class="btn btn-success">Crear nueva tarea <span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
+                  
+               </form>
+            </div>
+            
+            <div class="col-sm-6">
+               <form action="/tareasCompletadas" method="get">
+                  <button id="goBack" type="submit" class="btn btn-warning">Tareas Completadas  <span class="glyphicon glyphicon-tags" aria-hidden="true"></span></button>
+               </form>
+            </div>
+         </div>
+          
+         <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+               <form action="/home" method="post">
+                  <button id="goBack" type="submit" class="btn btn-info">Ir al home <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+               </form> 
+            </div>
          </div>
          
-         <div class="col-sm-6">
-            <form action="/home" method="post">
-               <button id="goBack" type="submit" class="btn btn-info">Ir al home  <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
-            </form> 
-         </div>  
          
       </div> 
 

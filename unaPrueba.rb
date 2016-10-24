@@ -1,28 +1,25 @@
 
 require "make_todo"
 
-Tarea.all.each do |tarea|
-   vble = tarea["id"]
-   Tarea.destroy(vble)
+# Tarea.all.each do |tarea|
+#    vble = tarea["id"]
+#    Tarea.destroy(vble)
+# end
+
+puts Tarea.all
+
+vble = Tarea.all
+vble.each do |tarea|
+   puts dones = tarea["done"]
 end
 
-# vble = Tarea.all
-# vble.each do |tarea|
-#    p tarea.values
+# @dones.each do |recorrer|
+#    puts recorrer
 # end
 
 # unHash = Tarea.all
 # unHash.each do |tarea|
 #    p tarea["id"]
-# end
-puts Tarea.all
-
-# vble = Tarea.all
-
-# if vble.empty? == true then
-#    puts "esta vacio"
-# else
-#    puts "tiene algo"
 # end
 
 # str2 = str1[0..9]
@@ -47,12 +44,3 @@ puts Tarea.all
 # else
 #    puts "hay algo"
 # end
-
-# params = {:task => " "}
-
-# puts params[:task].empty?
-
-# <% @hashTareas.each do |tarea| %>
-#   <% id = tarea["id"] %>
-#   <% Tarea.destroy(id) %>
-# <% end %>

@@ -45,11 +45,17 @@ get "/borrarTareas" do
    redirect '/lista'
 end
 
+get "/borrarTareas2" do
+   deleteTarea
+   redirect '/tareasCompletadas'
+end
+
 get "/completarTarea" do
    completar
    redirect '/lista'
 end
 
-post "/tareasCompletadas" do
+get "/tareasCompletadas" do
+   @hashTareas = Tarea.all
    erb :completas
 end
