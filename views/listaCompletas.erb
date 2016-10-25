@@ -16,15 +16,11 @@
       <div class="col-sm-offset-4 col-sm-4">
          <h1>TAREAS COMPLETADAS</h1><br>
 
-         <% if @hashTareas.empty? == true then %>
-            <div class="jumbotron">
-               <h2>No tienes tareas<br> completadas</h2>
-            </div>
-         <% end %>
-
+         <% contCompletas = 0 %>
          <% @hashTareas.each do |tarea| %>
             <% done = tarea["done"] %> 
             <% if done == true %> 
+               <% contCompletas += 1 %>
                <div class="panel panel-primary" id="fondoTareas">
                   <div class="panel-heading" id="tareasCompletas">
                      <h1 class="panel-title">
@@ -55,7 +51,7 @@
                      <div class="row">
                         <div class="col-sm-offset-3 col-sm-6">
                            <form action="/borrarCompletadas" method="get">
-                              <button type="submit" class="btn btn-danger">borrar</button>
+                              <button id="borrarYcompletar" type="submit" class="btn btn-danger">borrar</button>
                               <input type="text" name="idTarea" size="10" value="<%= id %>" hidden="true">
                            </form>
                         </div>
@@ -66,6 +62,12 @@
             <% end %> 
                  
          <% end %> 
+
+         <% if contCompletas == 0 %>
+            <div class="jumbotron">
+               <h2>No tienes tareas<br> completadas</h2>
+            </div>
+         <% end %>
 
          <br>
          <div class="col-sm-6">

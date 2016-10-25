@@ -37,6 +37,7 @@ html {
 #goTo {
    margin-bottom: 15px;
    margin-top: 0;
+   font-size: 15px;
 }
 
 #tareasCompletas {
@@ -44,7 +45,6 @@ html {
 }
 
 #fondoTareas {
-   /*background: #F2F2F2!important; */
    background: url('../images/paper2.jpg'); 
 }
 
@@ -54,7 +54,14 @@ html {
 
 #borrarYcompletar {
    margin: 5px 0;
+   font-size: 15px;
 }
 
-/*
-http://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_animate1*/
+#botonCrear {
+   margin-top: 15px;
+   font-size: 15px;
+}
+
+#homeButtons {
+   font-size: 15px;
+}

@@ -15,16 +15,12 @@
 
       <div class="col-sm-offset-3 col-sm-6">
          <h1>TAREAS PENDIENTES</h1><br>
-
-         <% if @hashTareas.empty? == true then %>
-            <div class="jumbotron">
-               <h2>No tienes tareas<br> pendientes</h2>
-            </div>
-         <% end %>
-
+         
+         <% contPendientes = 0 %>
          <% @hashTareas.each do |tarea| %>
             <% done = tarea["done"] %>
             <% if done == false %>
+               <% contPendientes += 1 %>
                <div class="panel panel-primary" id="fondoTareas">
                   <div class="panel-heading">
                      <h1 class="panel-title">
@@ -70,6 +66,12 @@
          
          <% end %>  
 
+         <% if contPendientes == 0 %>
+            <div class="jumbotron">
+               <h2>No tienes tareas<br> pendientes</h2>
+            </div>
+         <% end %>
+
          <br>
          <div class="row">
             <div class="col-sm-6">
@@ -81,7 +83,7 @@
             
             <div class="col-sm-6">
                <form action="/tareasCompletadas" method="post">
-                  <button id="goTo" type="submit" class="btn btn-warning">Tareas Completadas  <span class="glyphicon glyphicon-tags" aria-hidden="true"></span></button>
+                  <button id="goTo" type="submit" class="btn btn-warning">Tareas Completadas <span class="glyphicon glyphicon-tags" aria-hidden="true"></span></button>
                </form>
             </div>
          </div>
@@ -93,7 +95,6 @@
                </form> 
             </div>
          </div>
-         
          
       </div> 
 
