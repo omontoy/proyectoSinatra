@@ -65,3 +65,8 @@ html {
 #homeButtons {
    font-size: 15px;
 }
+
+#fondoSinTareas, #fondoApp {
+   background: url('../images/paper2.jpg');
+   background-size: cover;
+}
