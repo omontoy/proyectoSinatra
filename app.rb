@@ -22,44 +22,44 @@ post "/home" do
    erb :homeApp
 end
 
-post "/newTaskInterface" do   
+post "/home/newTaskInterface" do   
    erb :newTask
 end
 
 post "/crearTarea" do
    createTarea
-   redirect '/pendientes'
+   redirect '/home/pendientes'
 end
 
 post "/tareasCreadas" do
-   redirect '/pendientes'
+   redirect '/home/pendientes'
 end
 
 post "/tareasCompletadas" do
-   redirect '/completadas'
+   redirect '/home/completadas'
 end
 
-get "/pendientes" do
+get "/home/pendientes" do
    @hashTareas = Tarea.all
    erb :listaPendientes
 end
 
-get "/completadas" do
+get "/home/completadas" do
    @hashTareas = Tarea.all
    erb :listaCompletas
 end
 
 get "/completarTarea" do
    completeTarea
-   redirect '/pendientes'
+   redirect '/home/pendientes'
 end
 
 get "/borrarPendientes" do
    deleteTarea
-   redirect '/pendientes'
+   redirect '/home/pendientes'
 end
 
 get "/borrarCompletadas" do
    deleteTarea
-   redirect '/completadas'
+   redirect '/home/completadas'
 end
