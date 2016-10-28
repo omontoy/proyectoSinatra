@@ -2,18 +2,6 @@
 require "sinatra"
 require "make_todo"
 
-def createTarea
-   Tarea.create(params[:task].upcase)
-end
-
-def deleteTarea
-   Tarea.destroy(params[:idTarea])
-end
-
-def completeTarea
-   Tarea.update(params[:completada])
-end
-
 get "/" do  
    erb :welcome 
 end
@@ -27,7 +15,7 @@ post "/home/newTaskInterface" do
 end
 
 post "/crearTarea" do
-   createTarea
+   Tarea.create(params[:task].upcase)
    redirect '/home/pendientes'
 end
 
@@ -50,16 +38,16 @@ get "/home/completadas" do
 end
 
 get "/completarTarea" do
-   completeTarea
+   Tarea.update(params[:completada])
    redirect '/home/pendientes'
 end
 
 get "/borrarPendientes" do
-   deleteTarea
+   Tarea.destroy(params[:idTarea])
    redirect '/home/pendientes'
 end
 
 get "/borrarCompletadas" do
-   deleteTarea
+   Tarea.destroy(params[:idTarea])
    redirect '/home/completadas'
 end
